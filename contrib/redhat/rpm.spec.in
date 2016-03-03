@@ -1,0 +1,74 @@
+Name:           @PACKAGE@
+Version:        @VERSION@
+Release:        1%{?dist}
+Summary:        http request/response parser for C
+
+Group:          System Environment/Libraries
+License:        GPLv3+
+URL:            https://github.com/nodejs/http-parser
+Source0:        %{name}-%{version}.tar.gz
+BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
+
+BuildRequires:  autoconf
+BuildRequires:  automake
+BuildRequires:  gcc
+BuildRequires:  libtool
+
+%description
+This is a parser for HTTP messages written in C. It parses both requests and
+responses. The parser is designed to be used in performance HTTP applications.
+It does not make any syscalls nor allocations, it does not buffer data, it can
+be interrupted at anytime. Depending on your architecture, it only requires
+about 40 bytes of data per message stream (in a web server that is per connection).
+
+
+%package devel
+Summary:        http request/response parser for C - Development Files
+Group:          Development/Libraries
+
+%description devel
+This is a parser for HTTP messages written in C. It parses both requests and
+responses. The parser is designed to be used in performance HTTP applications.
+It does not make any syscalls nor allocations, it does not buffer data, it can
+be interrupted at anytime. Depending on your architecture, it only requires
+about 40 bytes of data per message stream (in a web server that is per connection).
+
+This package contains the header files for developing code against http-parser
+
+
+%prep
+%setup -q
+
+
+%build
+%configure
+make %{?_smp_mflags}
+
+
+%install
+rm -rf $RPM_BUILD_ROOT
+make install DESTDIR=$RPM_BUILD_ROOT
+
+
+
+%clean
+rm -rf $RPM_BUILD_ROOT
+
+
+%files
+%defattr(-,root,root,-)
+%{_libdir}/lib%{name}.so.@ABI_CURRENT@.@ABI_REVISION@.@ABI_AGE@
+%{_libdir}/lib%{name}.so
+
+%files devel
+%defattr(-,root,root,-)
+%{_includedir}/%{name}.h
+%{_libdir}/lib%{name}.a
+%{_libdir}/lib%{name}.la
+%{_libdir}/lib%{name}.so.@ABI_CURRENT@
+%{_libdir}/pkgconfig/%{name}.pc
+
+
+%changelog
+* Thu Mar 03 2016 Dan Molik <dan@d3fy.net> 2.6.1-1
+- Initial RPM import

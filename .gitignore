@@ -1,4 +1,3 @@
-/out/
 core
 tags
 *.o
@@ -9,22 +8,30 @@ bench
 url_parser
 parsertrace
 parsertrace_g
-*.mk
 *.Makefile
 *.so.*
-*.exe.*
-*.exe
 *.a
 
 
-# Visual Studio uglies
-*.suo
-*.sln
-*.vcxproj
-*.vcxproj.filters
-*.vcxproj.user
-*.opensdf
-*.ncrunchsolution*
-*.sdf
-*.vsp
-*.psess
+Makefile
+Makefile.in
+aclocal.m4
+autom4te.cache/
+config.h
+config.h.in
+config.h.in~
+config.log
+config.status
+configure
+
+libtool
+contrib/redhat/rpm.spec
+pkg/http_parser.pc
+stamp-h1
+
+http_parser-*.tar.*
+.libs/
+src/.deps/
+libhttp_parser.la
+src/.dirstamp
+src/http_parser.lo
