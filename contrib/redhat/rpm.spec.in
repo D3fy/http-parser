@@ -58,14 +58,14 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(-,root,root,-)
 %{_libdir}/lib%{name}.so.@ABI_CURRENT@.@ABI_REVISION@.@ABI_AGE@
-%{_libdir}/lib%{name}.so
+%{_libdir}/lib%{name}.so.@ABI_CURRENT@
 
 %files devel
 %defattr(-,root,root,-)
 %{_includedir}/%{name}.h
 %{_libdir}/lib%{name}.a
 %{_libdir}/lib%{name}.la
-%{_libdir}/lib%{name}.so.@ABI_CURRENT@
+%{_libdir}/lib%{name}.so
 %{_libdir}/pkgconfig/%{name}.pc
 
 
