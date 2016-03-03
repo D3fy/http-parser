@@ -10,7 +10,7 @@ AC_CONFIG_AUX_DIR([build])
 AC_CONFIG_MACRO_DIR([build])
 AC_CONFIG_HEADER([config.h])
 
-AX_DEFINE_ABI_VERSION([2], [0], [1])
+AX_DEFINE_ABI_VERSION([1], [0], [0])
 AC_DEFINE([HTTP_PARSER_VERSION_MAJOR], [v_maj],     [Set the major version.])
 AC_DEFINE([HTTP_PARSER_VERSION_MINOR], [v_min],     [Set the minor version.])
 AC_DEFINE([HTTP_PARSER_VERSION_PATCH], [v_pat],     [Set the patch version.])
